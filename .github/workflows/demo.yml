@@ -5,8 +5,6 @@ on:
 
 jobs:
   tests:
-    env:
-      ccKey: ${{ secrets.CCKEY }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
