@@ -23,6 +23,7 @@ jobs:
         GIT_COMMIT_SHA=$(git rev-parse origin/$GITHUB_HEAD_REF)
       - name: "Format test report"
         run: |
+          echo "BRANCH: $GIT_BRANCH, SHA: $GIT_COMMIT_SHA"
           chmod +x bin/cc-test-reporter
           bin/cc-test-reporter format-coverage -t lcov -o climate/codeclimate.total.json coverage/lcov.info
           bin/cc-test-reporter upload-coverage -i climate/codeclimate.total.json -r 9986f24cc21143b2e80e9fe0e3400d868d713fdd57a2671b9c35bab0c9d2b7cd
