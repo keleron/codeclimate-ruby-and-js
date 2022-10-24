@@ -9,6 +9,7 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: '16'
-        
+
     steps:
-      - run: "CI=true yarn test"
+    - name: "Run yarn tests" 
+    - run: "CI=true yarn test"
