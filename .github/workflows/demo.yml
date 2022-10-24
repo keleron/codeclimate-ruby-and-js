@@ -21,7 +21,7 @@ jobs:
       #     yarn install
       #     CI=true yarn test --coverage
 
-      - name: "Format tGIT_BRANCH=$GITHUB_HEAD_REFest report"
+      - name: "Format report"
         run: |
           echo "$GIT_BRANCH, $GIT_COMMIT_SHA"
           chmod +x bin/cc-test-reporter
