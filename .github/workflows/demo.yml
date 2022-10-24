@@ -18,6 +18,9 @@ jobs:
       #   run: |
       #     yarn install
       #     CI=true yarn test --coverage
+      env: |
+        GIT_BRANCH=$GITHUB_HEAD_REF
+        GIT_COMMIT_SHA=$(git rev-parse origin/$GITHUB_HEAD_REF)
       - name: "Format test report"
         run: |
           chmod +x bin/cc-test-reporter
