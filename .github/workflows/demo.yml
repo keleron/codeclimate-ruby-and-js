@@ -7,7 +7,7 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     env: 
-      GIT_BRANCH=caritatriste
+      GIT_BRANCH: caritatriste
     #   GIT_COMMIT_SHA=$(git rev-parse origin/$GITHUB_HEAD_REF)
     strategy:
       matrix:
