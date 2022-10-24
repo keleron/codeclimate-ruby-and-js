@@ -19,7 +19,7 @@ jobs:
         run: |
           yarn install
           CI=true yarn test --coverage
-      - name: "Format test report"-
+      - name: "Format test report"
         run: |
           chmod +x bin/cc-test-reporter
           bin/cc-test-reporter format-coverage -t lcov -o climate/codeclimate.total.json coverage/lcov.info
