@@ -1,0 +1,23 @@
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on:
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps: 
+      - uses: actions/checkout@v3  
+
+      - name: "Run yarn tests" 
+        run: |
+          yarn install
+          CI=true yarn test --coverage
+      - name: "Format test report"
+        run: |
+          chmod +x bin/cc-test-reporter
+          bin/cc-test-reporter format-coverage -t lcov -o climate/codeclimate.total.json coverage/lcov.info
+          bin/cc-test-reporter upload-coverage -i climate/codeclimate.total.json -r ${{ CCKEY }}
