@@ -7,7 +7,7 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     env: 
-      GIT_BRANCH: $GITHUB_HEAD_REF
+      GIT_BRANCH: {{ $GITHUB_HEAD_REF }}
       GIT_COMMIT_SHA: $(git rev-parse origin/$GITHUB_HEAD_REF)
     #   GIT_COMMIT_SHA=$(git rev-parse origin/$GITHUB_HEAD_REF)
     strategy:
