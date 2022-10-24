@@ -15,7 +15,7 @@ jobs:
       - name: "Run yarn tests" 
         run: |
           yarn install
-          CI=true yarn test
+          CI=true yarn test --coverage
       - name: "Format test report"
         run: |
           chmod +x bin/cc-test-reporter
