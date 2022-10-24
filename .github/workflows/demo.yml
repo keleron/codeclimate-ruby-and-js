@@ -6,24 +6,29 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
-    env: 
-      GIT_BRANCH: ${{ GITHUB_HEAD_REF }}
+    env:
+      ASD: 123
+      GIT_BRANCH: $GITHUB_HEAD_REF
       GIT_COMMIT_SHA: $(git rev-parse origin/$GITHUB_HEAD_REF)
     #   GIT_COMMIT_SHA=$(git rev-parse origin/$GITHUB_HEAD_REF)
     strategy:
       matrix:
         node-version: [16.x]
     steps: 
-      - uses: actions/checkout@v3  
+      - uses: actions/checkout@v3 
+      - name: echo thinkgs
+        run: |
+          echo "BRANCH ${{env.ASD}}"
+          echo "BRANCH ${{env.GIT_BRANCH}}"
 
       # - name: "Run yarn tests" 
       #   run: |
       #     yarn install
       #     CI=true yarn test --coverage
 
-      - name: "Format report"
-        run: |
-          echo "$GIT_BRANCH, $GIT_COMMIT_SHA"
-          chmod +x bin/cc-test-reporter
-          bin/cc-test-reporter format-coverage -t lcov -o climate/codeclimate.total.json coverage/lcov.info
-          bin/cc-test-reporter upload-coverage -i climate/codeclimate.total.json -r 9986f24cc21143b2e80e9fe0e3400d868d713fdd57a2671b9c35bab0c9d2b7cd
+      # - name: "Format report"
+      #   run: |
+      #     echo "$GIT_BRANCH, $GIT_COMMIT_SHA"
+      #     chmod +x bin/cc-test-reporter
+      #     bin/cc-test-reporter format-coverage -t lcov -o climate/codeclimate.total.json coverage/lcov.info
+      #     bin/cc-test-reporter upload-coverage -i climate/codeclimate.total.json -r 9986f24cc21143b2e80e9fe0e3400d868d713fdd57a2671b9c35bab0c9d2b7cd
