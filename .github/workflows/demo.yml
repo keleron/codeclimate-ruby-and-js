@@ -7,7 +7,8 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     env: 
-      GIT_BRANCH: caritatriste
+      GIT_BRANCH: $GITHUB_HEAD_REF
+      GIT_COMMIT_SHA: $(git rev-parse origin/$GITHUB_HEAD_REF)
     #   GIT_COMMIT_SHA=$(git rev-parse origin/$GITHUB_HEAD_REF)
     strategy:
       matrix:
@@ -20,9 +21,9 @@ jobs:
       #     yarn install
       #     CI=true yarn test --coverage
 
-      - name: "Format test report"
+      - name: "Format tGIT_BRANCH=$GITHUB_HEAD_REFest report"
         run: |
-          echo "BRANCH: $GITHUB_HEAD_REF, SHA: $GITHUB_SHA, $GIT_BRANCH"
+          echo "$GIT_BRANCH, $GIT_COMMIT_SHA"
           chmod +x bin/cc-test-reporter
           bin/cc-test-reporter format-coverage -t lcov -o climate/codeclimate.total.json coverage/lcov.info
           bin/cc-test-reporter upload-coverage -i climate/codeclimate.total.json -r 9986f24cc21143b2e80e9fe0e3400d868d713fdd57a2671b9c35bab0c9d2b7cd
