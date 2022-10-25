@@ -32,4 +32,4 @@ jobs:
           chmod +x bin/cc-test-reporter
           bin/cc-test-reporter format-coverage -t lcov -o climate/codeclimate.total.json coverage/lcov.info
           ls climate
-          bin/cc-test-reporter upload-coverage -i -d climate/codeclimate.total.json -r ${{ env.CCKEY }}
+          bin/cc-test-reporter upload-coverage --debug -i climate/codeclimate.total.json -r ${{ env.CCKEY }}
