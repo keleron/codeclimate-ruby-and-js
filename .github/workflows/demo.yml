@@ -17,7 +17,7 @@ jobs:
       - name: "Upload Report"
         run: |
           GIT_BRANCH=$GITHUB_HEAD_REF
-          GIT_COMMIT_SHA=$GITHUB_SHA
+          GIT_COMMIT_SHA=$(git rev-parse origin/$GITHUB_HEAD_REF)
           echo "$GIT_BRANCH , $GIT_COMMIT_SHA"
           chmod +x bin/cc-test-reporter
           bin/cc-test-reporter format-coverage -t lcov -o climate/codeclimate.total.json coverage/lcov.info
