@@ -23,6 +23,7 @@ jobs:
           echo "N. BRANCH $GITHUB_REF_NAME"
           echo "N. SHA $GITHUB_SHA"
           echo "BRANCH $GIT_BRANCH"
+          echo "BRANCH2 ${{ env.GIT_BRANCH }}"
 
       # - name: "Format report"
       #   run: |
