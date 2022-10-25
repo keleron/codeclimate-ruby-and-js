@@ -31,4 +31,5 @@ jobs:
           echo "$GIT_BRANCH, $GIT_COMMIT_SHA"
           chmod +x bin/cc-test-reporter
           bin/cc-test-reporter format-coverage -t lcov -o climate/codeclimate.total.json coverage/lcov.info
-          bin/cc-test-reporter upload-coverage -i climate/codeclimate.total.json -r ${{ env.CCKEY }}
+          ls climate
+          bin/cc-test-reporter upload-coverage -i -d climate/codeclimate.total.json -r ${{ env.CCKEY }}
