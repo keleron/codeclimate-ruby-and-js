@@ -14,11 +14,27 @@ jobs:
         node-version: [16.x]
     steps: 
       - uses: actions/checkout@v3 
+      - name: Run Coverage
+        run: |
+          yarn install
+          CI=true yarn test --coverage
+
+      - name: Set ENV for codeclimate (pull_request)
+        run: |
+          git fetch --no-tags --prune --depth=1 origin +refs/heads/$GITHUB_HEAD_REF:refs/remotes/origin/$GITHUB_HEAD_REF
+          echo "GIT_BRANCH=$GITHUB_HEAD_REF" >> $GITHUB_ENV
+          echo "GIT_COMMIT_SHA=$(git rev-parse origin/$GITHUB_HEAD_REF)" >> $GITHUB_ENV
+        if: github.event_name == 'pull_request'
+
+      - name: Set ENV for codeclimate (push)
+        run: |
+          echo "GIT_BRANCH=$GITHUB_REF" >> $GITHUB_ENV
+          echo "GIT_COMMIT_SHA=$GITHUB_SHA" >> $GITHUB_ENV
+        if: github.event_name == 'push'
+
       - name: "Upload Report"
         run: |
-          GIT_BRANCH=$GITHUB_REF_NAME
-          GIT_COMMIT_SHA=$GITHUB_SHA
-          chmod +x bin/cc-test-reporter
-          bin/cc-test-reporter format-coverage -t lcov -o climate/codeclimate.total.json coverage/lcov.info
-          ls climate
-          bin/cc-test-reporter upload-coverage --debug -i climate/codeclimate.total.json
+          echo "VARIABLES $GIT_BRANCH , $GIT_COMMIT_SHA"
+          bin/cc-test-reporter format-coverage --debug -t lcov -o climate/codeclimate.frontend.json coverage/lcov.info
+          bin/cc-test-reporter sum-coverage climate/codeclimate.*.json -p 1 -o climate/codeclimate.total.json
+          bin/cc-test-reporter upload-coverage -i climate/codeclimate.total.json
