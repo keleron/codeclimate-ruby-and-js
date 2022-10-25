@@ -14,12 +14,16 @@ jobs:
         node-version: [16.x]
     steps: 
       - uses: actions/checkout@v3 
+      - name: Run Coverage
+        run: |
+          CI=true yarn test --coverage
       - name: "Upload Report"
         run: |
           chmod +x bin/cc-test-reporter
           GIT_BRANCH=$GITHUB_HEAD_REF
           GIT_COMMIT_SHA=$GITHUB_SHA
           echo "VARIABLES $GIT_BRANCH , $GIT_COMMIT_SHA"
-          bin/cc-test-reporter format-coverage -t lcov -o climate/codeclimate.total.json coverage/lcov.info
-          ls climate
-          GIT_BRANCH=$GITHUB_HEAD_REF GIT_COMMIT_SHA=$GITHUB_SHA bin/cc-test-reporter upload-coverage --debug -i climate/codeclimate.total.json
+          CI=true yarn test --coverage
+          bin/cc-test-reporter format-coverage -t lcov -o climate/codeclimate.frontend.json coverage/lcov.info
+          bin/cc-test-reporter sum-coverage climate/codeclimate.*.json -p 1 -o climate/codeclimate.total.json
+          bin/cc-test-reporter upload-coverage --debug -i climate/codeclimate.total.json

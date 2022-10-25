@@ -1,0 +1,82 @@
+{
+  "ci_service": {
+    "branch": "task/5-asdfas",
+    "build_identifier": "",
+    "build_url": "",
+    "commit_sha": "3afbca88212ab900ec55e621defca734a8fe9396",
+    "committed_at": 1666671883,
+    "name": ""
+  },
+  "environment": {
+    "gem_version": "3.3.7",
+    "package_version": "",
+    "pwd": "/home/fabian/Escritorio/codeclimate-ruby-and-js",
+    "prefix": "/home/fabian/Escritorio/codeclimate-ruby-and-js",
+    "rails_root": "",
+    "reporter_version": "0.10.4",
+    "simplecov_root": ""
+  },
+  "git": {
+    "branch": "task/5-asdfas",
+    "head": "3afbca88212ab900ec55e621defca734a8fe9396",
+    "committed_at": 1666671883
+  },
+  "covered_percent": 7.142857142857142,
+  "covered_strength": 0,
+  "line_counts": {
+    "missed": 13,
+    "covered": 1,
+    "total": 14
+  },
+  "source_files": [
+    {
+      "blob_id": "1178d738cd49e572b3ba2f608a946981bec8af4c",
+      "coverage": "[null,null,null,0,0]",
+      "covered_percent": 0,
+      "covered_strength": 0,
+      "line_counts": {
+        "missed": 2,
+        "covered": 0,
+        "total": 2
+      },
+      "name": "src/components/CustomButton.js"
+    },
+    {
+      "blob_id": "986cad418be1d1f9527bea79364ba2438fd4b621",
+      "coverage": "[null,null,null,null,1]",
+      "covered_percent": 100,
+      "covered_strength": 1,
+      "line_counts": {
+        "missed": 0,
+        "covered": 1,
+        "total": 1
+      },
+      "name": "src/App.js"
+    },
+    {
+      "blob_id": "d563c0fb10ba0e42724b21286eb546ee4e5734fc",
+      "coverage": "[null,null,null,null,null,null,0,0,null,null,null,null,null,null,null,null,0]",
+      "covered_percent": 0,
+      "covered_strength": 0,
+      "line_counts": {
+        "missed": 3,
+        "covered": 0,
+        "total": 3
+      },
+      "name": "src/index.js"
+    },
+    {
+      "blob_id": "5253d3ad9e6be6690549cb255f5952337b02401d",
+      "coverage": "[0,0,0,0,0,0,0,0]",
+      "covered_percent": 0,
+      "covered_strength": 0,
+      "line_counts": {
+        "missed": 8,
+        "covered": 0,
+        "total": 8
+      },
+      "name": "src/reportWebVitals.js"
+    }
+  ],
+  "repo_token": ""
+}
