@@ -4,8 +4,8 @@ on:
   pull_request:
 
 env:
-  GIT_BRANCH: Hello
-  GIT_COMMIT_SHA: $GITHUB_SHA
+  GIT_BRANCH: ${{GIT_BRANCH}}
+  GIT_COMMIT_SHA: ${{GITHUB_SHA}}
   CCKEY: ${{ secrets.CCKEY }}
 
 
