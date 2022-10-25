@@ -26,10 +26,8 @@ jobs:
           echo "GIT_COMMIT_SHA $GIT_COMMIT_SHA"
           echo "CCKEY $CCKEY"
 
-      # - name: "Format report"
-      #   run: |
-      #     echo "$GIT_BRANCH, $GIT_COMMIT_SHA"
-      #     chmod +x bin/cc-test-reporter
-      #     bin/cc-test-reporter format-coverage -t lcov -o climate/codeclimate.total.json coverage/lcov.info
-      #     ls climate
-      #     bin/cc-test-reporter upload-coverage --debug -i climate/codeclimate.total.json -r ${{ env.CCKEY }}
+      - name: "Format report"
+        run: |
+          echo "GIT_BRANCH $GIT_BRANCH"
+          echo "GIT_COMMIT_SHA $GIT_COMMIT_SHA"
+          echo "CCKEY $CCKEY"
