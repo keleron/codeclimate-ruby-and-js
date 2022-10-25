@@ -21,10 +21,10 @@ jobs:
           TEMP: 123
         run: |
           GIT_BRANCH=$GITHUB_REF_NAME
-          echo "N. BRANCH $GITHUB_REF_NAME"
-          echo "N. SHA $GITHUB_SHA"
-          echo "BRANCH $GIT_BRANCH"
-          echo "BRANCH2 ${{ env.GIT_BRANCH }}"
+          GIT_COMMIT_SHA=$GITHUB_SHA
+          echo "GIT_BRANCH $GIT_BRANCH"
+          echo "GIT_COMMIT_SHA $GIT_COMMIT_SHA"
+          echo "CCKEY $CCKEY"
 
       # - name: "Format report"
       #   run: |
