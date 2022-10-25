@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v3 
       - name: "Upload Report"
         run: |
-          GIT_BRANCH=$GITHUB_REF_NAME
+          GIT_BRANCH=$GITHUB_REF
           GIT_COMMIT_SHA=$GITHUB_SHA
           chmod +x bin/cc-test-reporter
           bin/cc-test-reporter format-coverage -t lcov -o climate/codeclimate.total.json coverage/lcov.info
