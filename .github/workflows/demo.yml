@@ -20,7 +20,7 @@ jobs:
           CCKEY: ${{ secrets.CCKEY }}
           TEMP: 123
         run: |
-          GIT_BRANCH=123
+          GIT_BRANCH=$GITHUB_REF_NAME
           echo "N. BRANCH $GITHUB_REF_NAME"
           echo "N. SHA $GITHUB_SHA"
           echo "BRANCH $GIT_BRANCH"
