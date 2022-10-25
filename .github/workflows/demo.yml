@@ -22,4 +22,4 @@ jobs:
           echo "VARIABLES $GIT_BRANCH , $GIT_COMMIT_SHA"
           bin/cc-test-reporter format-coverage -t lcov -o climate/codeclimate.total.json coverage/lcov.info
           ls climate
-          bin/cc-test-reporter upload-coverage --debug -i climate/codeclimate.total.json
+          GIT_BRANCH=$GITHUB_HEAD_REF GIT_COMMIT_SHA=$GITHUB_SHA bin/cc-test-reporter upload-coverage --debug -i climate/codeclimate.total.json
