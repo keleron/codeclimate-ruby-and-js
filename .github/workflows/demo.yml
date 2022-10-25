@@ -18,7 +18,7 @@ jobs:
         run: |
           chmod +x bin/cc-test-reporter
           GIT_BRANCH=$GITHUB_HEAD_REF
-          GIT_COMMIT_SHA=$(git rev-parse origin/$GITHUB_HEAD_REF)
+          GIT_COMMIT_SHA=$GITHUB_HEAD_REF
           echo "VARIABLES $GIT_BRANCH , $GIT_COMMIT_SHA"
           bin/cc-test-reporter format-coverage -t lcov -o climate/codeclimate.total.json coverage/lcov.info
           ls climate
