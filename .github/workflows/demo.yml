@@ -6,11 +6,6 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
-    env:
-      ASD: 123
-      GIT_BRANCH: $GITHUB_HEAD_REF
-      GIT_COMMIT_SHA: $GITHUB_SHA
-      CCKEY: ${{ secrets.CCKEY }}
     strategy:
       matrix:
         node-version: [16.x]
@@ -18,13 +13,13 @@ jobs:
       - uses: actions/checkout@v3 
       - name: echo thinkgs
         run: |
+          GIT_BRANCH=$GITHUB_HEAD_REF
+          GIT_COMMIT_SHA=$GITHUB_SHA
+          CCKEY=${{ secrets.CCKEY }}
+
           echo "BRANCH ${{env.GIT_BRANCH}}"
           echo "SHA ${{env.GIT_COMMIT_SHA}}"
           echo "CCKEY ${{ env.CCKEY }}"
-      # - name: "Run yarn tests" 
-      #   run: |
-      #     yarn install
-      #     CI=true yarn test --coverage
 
       - name: "Format report"
         run: |
