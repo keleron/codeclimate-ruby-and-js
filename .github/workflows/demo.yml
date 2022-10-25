@@ -3,26 +3,29 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
   pull_request:
 
+env:
+  CC_TEST_REPORTER_ID: ${{ secrets.CCKEY }}
+
 jobs:
   tests:
     runs-on: ubuntu-latest
-    env: 
-      GIT_BRANCH: caritatriste
-    #   GIT_COMMIT_SHA=$(git rev-parse origin/$GITHUB_HEAD_REF)
     strategy:
       matrix:
         node-version: [16.x]
     steps: 
-      - uses: actions/checkout@v3  
-
-      # - name: "Run yarn tests" 
+      - uses: actions/checkout@v3 
+      # - name: echo thinkgs
       #   run: |
-      #     yarn install
-      #     CI=true yarn test --coverage
-
-      - name: "Format test report"
+      #     GIT_BRANCH=$GITHUB_REF_NAME
+      #     GIT_COMMIT_SHA=$GITHUB_SHA
+      #     echo "GIT_BRANCH $GIT_BRANCH"
+      #     echo "GIT_COMMIT_SHA $GIT_COMMIT_SHA"
+      #     echo "CCKEY $CCKEY"
+      - name: "Upload Report"
         run: |
-          echo "BRANCH: $GITHUB_HEAD_REF, SHA: $GITHUB_SHA, $GIT_BRANCH"
+          GIT_BRANCH=$GITHUB_REF_NAME
+          GIT_COMMIT_SHA=$GITHUB_SHA
           chmod +x bin/cc-test-reporter
           bin/cc-test-reporter format-coverage -t lcov -o climate/codeclimate.total.json coverage/lcov.info
-          bin/cc-test-reporter upload-coverage -i climate/codeclimate.total.json -r 9986f24cc21143b2e80e9fe0e3400d868d713fdd57a2671b9c35bab0c9d2b7cd
+          ls climate
+          bin/cc-test-reporter upload-coverage --debug -i climate/codeclimate.total.json

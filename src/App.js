@@ -4,7 +4,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      learn react 2
+      learn react 23
     </div>
   );
 }
