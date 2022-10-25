@@ -8,15 +8,15 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
-    env:
-      GIT_BRANCH: $GITHUB_REF_NAME
-      GIT_COMMIT_SHA: $GITHUB_SHA
-      CCKEY: ${{ secrets.CCKEY }}
     strategy:
       matrix:
         node-version: [16.x]
     steps: 
       - uses: actions/checkout@v3 
+        env:
+          GIT_BRANCH: $GITHUB_REF_NAME
+          GIT_COMMIT_SHA: $GITHUB_SHA
+          CCKEY: ${{ secrets.CCKEY }}
       - name: echo thinkgs
         run: |
           echo "N. BRANCH $GITHUB_REF_NAME"
