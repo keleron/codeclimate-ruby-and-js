@@ -35,6 +35,6 @@ jobs:
       - name: "Upload Report"
         run: |
           echo "VARIABLES $GIT_BRANCH , $GIT_COMMIT_SHA"
-          # bin/cc-test-reporter format-coverage --debug -t lcov -o climate/codeclimate.frontend.json coverage/lcov.info
-          # bin/cc-test-reporter sum-coverage climate/codeclimate.*.json -p 1 -o climate/codeclimate.total.json
-          # bin/cc-test-reporter upload-coverage -i climate/codeclimate.total.json
+          bin/cc-test-reporter format-coverage --debug -t lcov -o climate/codeclimate.frontend.json coverage/lcov.info
+          bin/cc-test-reporter sum-coverage climate/codeclimate.*.json -p 1 -o climate/codeclimate.total.json
+          bin/cc-test-reporter upload-coverage -i climate/codeclimate.total.json
