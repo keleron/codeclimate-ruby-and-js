@@ -16,10 +16,9 @@ jobs:
       - uses: actions/checkout@v3 
       - name: "Upload Report"
         run: |
-          git fetch --depth=1 origin
+          chmod +x bin/cc-test-reporter
           GIT_BRANCH=$GITHUB_HEAD_REF
           GIT_COMMIT_SHA=$(git rev-parse origin/$GITHUB_HEAD_REF)
-          chmod +x bin/cc-test-reporter
           echo "VARIABLES $GIT_BRANCH , $GIT_COMMIT_SHA"
           bin/cc-test-reporter format-coverage -t lcov -o climate/codeclimate.total.json coverage/lcov.info
           ls climate
