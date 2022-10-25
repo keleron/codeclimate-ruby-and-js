@@ -15,17 +15,14 @@ jobs:
       - uses: actions/checkout@v3 
       - name: echo thinkgs
         env:
-          GIT_BRANCH: ${{ GITHUB_REF_NAME }}
-          GIT_COMMIT_SHA: $GITHUB_SHA
+          # GIT_BRANCH: ${{ GITHUB_REF_NAME }}
+          # GIT_COMMIT_SHA: $GITHUB_SHA
           CCKEY: ${{ secrets.CCKEY }}
           TEMP: 123
         run: |
           echo "N. BRANCH $GITHUB_REF_NAME"
           echo "N. SHA $GITHUB_SHA"
-          echo "BRANCH ${{ env.GIT_BRANCH }}"
-          echo "SHA $GIT_COMMIT_SHA"
-          echo "CCKEY $CCKEY"
-          echo "TEMP $TEMP"
+          GIT_BRANCH=GITHUB_REF_NAME echo "BRANCH $GIT_BRANCH"
 
       # - name: "Format report"
       #   run: |
