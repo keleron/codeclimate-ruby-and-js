@@ -14,13 +14,6 @@ jobs:
         node-version: [16.x]
     steps: 
       - uses: actions/checkout@v3 
-      # - name: echo thinkgs
-      #   run: |
-      #     GIT_BRANCH=$GITHUB_REF_NAME
-      #     GIT_COMMIT_SHA=$GITHUB_SHA
-      #     echo "GIT_BRANCH $GIT_BRANCH"
-      #     echo "GIT_COMMIT_SHA $GIT_COMMIT_SHA"
-      #     echo "CCKEY $CCKEY"
       - name: "Upload Report"
         run: |
           GIT_BRANCH=$GITHUB_REF_NAME
